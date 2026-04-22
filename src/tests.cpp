@@ -40,7 +40,7 @@ int cnt_lines() {
 
 test_suite basic_case = []() {
   std::string name = "basic_case";
-  in << "for(i=0;i<10;++i) print(\"wobla\");";
+  in << "for(i=0;i<10;++i) print(\"basic\");";
 
   try {
     exec();
@@ -57,7 +57,7 @@ test_suite basic_case = []() {
 
 test_suite two_cycles = []() {
   std::string name = "two_cycles";
-  in << "for(i=0;i<10;++i) for(j=0;j<10;++j) print(\"wobla\");";
+  in << "for(i=0;i<10;++i) for(j=0;j<10;++j) print(\"two\");";
 
   try {
     exec();
@@ -74,7 +74,8 @@ test_suite two_cycles = []() {
 
 test_suite three_cycles = []() {
   std::string name = "three_cycles";
-  in << "for(i=0;i<3;++i) for(j=0;j<3;++j) for(k=0;k<3;++k) print(\"wobla\");";
+  in << "for(i=0;i<3;++i) for(j=0;j<3;++j) for(k=0;k<3;++k) "
+        "print(\"three_cycles\");";
 
   try {
     exec();
@@ -92,7 +93,7 @@ test_suite three_cycles = []() {
 test_suite four_cycles = []() {
   std::string name = "four_cycles";
   in << "for(i=0;i<2;++i) for(j=0;j<2;++j) for(k=0;k<2;++k) "
-        "for(mishka=0;mishka<2;++mishka) print(\"wobla\");";
+        "for(a=0;a<2;++a) print(\"four\");";
 
   try {
     exec();
@@ -109,7 +110,7 @@ test_suite four_cycles = []() {
 
 test_suite decrement = []() {
   std::string name = "decrement";
-  in << "for (i=10;i>0;i--) print(\"nah\");";
+  in << "for (i=10;i>0;i--) print(\"dec\");";
 
   try {
     exec();
@@ -126,7 +127,7 @@ test_suite decrement = []() {
 
 test_suite logical_ops = []() {
   std::string name = "logical_ops";
-  in << "for (a=1; a || 0; a--) for (b = 1; b && 1; b--) print(\"nah\");";
+  in << "for (a=1; a || 0; a--) for (b = 1; b && 1; b--) print(\"ops\");";
 
   try {
     exec();
@@ -142,7 +143,7 @@ test_suite logical_ops = []() {
 
 test_suite test_greater_or_eq = []() {
   std::string name = "test_greater_or_eq";
-  in << "for (i=0;i<=10;++i) print(\"nah\");";
+  in << "for (i=0;i<=10;++i) print(\"goreq\");";
 
   try {
     exec();
@@ -161,7 +162,7 @@ test_suite test_lower_or_eq = []() {
   std::string name = "test_lower_or_eq";
   // Отмечу, что если бы был предел i >= 0, то это бы всегда было верно, так
   // как числа в языке беззнаковые
-  in << "for (i=11;i>=1;--i) print(\"nah\");";
+  in << "for (i=11;i>=1;--i) print(\"lower_or_eq\");";
 
   try {
     exec();
@@ -180,7 +181,7 @@ test_suite test_nei = []() {
   std::string name = "test_nei";
   // Отмечу, что если бы был предел i >= 0, то это бы всегда было верно, так
   // как числа в языке беззнаковые
-  in << "for (i=0;i<10;++i) for(j=0;j!=i;++j) print(\"nah\");";
+  in << "for (i=0;i<10;++i) for(j=0;j!=i;++j) print(\"noti\");";
 
   try {
     exec();
@@ -225,7 +226,7 @@ test_suite syntax_error = []() {
 
 test_suite isnt_initialized = []() {
   std::string name = "isnt_initialized";
-  in << "for(;i<2;++i) print(\"wasdasfdasdfsaowchik\");";
+  in << "for(;i<2;++i) print(\"abra\");";
 
   try {
     exec();
@@ -240,7 +241,7 @@ test_suite isnt_initialized = []() {
 
 test_suite out_of_scope = []() {
   std::string name = "out_of_scope";
-  in << "for(i=0;j<2;++i) for(j=0;j<3;++j) print(\"wasdasfdasdfsaowchik\");";
+  in << "for(i=0;j<2;++i) for(j=0;j<3;++j) print(\"outofscope\");";
 
   try {
     exec();
@@ -255,7 +256,7 @@ test_suite out_of_scope = []() {
 
 test_suite init_twice = []() {
   std::string name = "init_twice";
-  in << "for(i=0;i<2;++i) for(i=0;i<3;++i) print(\"wasdasfdasdfsaowchik\");";
+  in << "for(i=0;i<2;++i) for(i=0;i<3;++i) print(\"init twice\");";
 
   try {
     exec();
